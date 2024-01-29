@@ -81,9 +81,10 @@ class HomeController extends Controller
         $uuid = session('uuid');
         $id_company = Company::where('uuid', $uuid)->first()->id;
         $data = date("Y-m-d");
+        $totalequipa= User::where("id_company", $id_company)->count();
         $alertaAbertura = Alerta::where('id_empresa',$id_company)->where('tipo', 0)->orderBy('created_at','desc')->whereDate('created_at',$data)->first();
         $alertaFecho = Alerta::where('id_empresa',$id_company)->where('tipo', 1)->orderBy('created_at','desc')->whereDate('created_at',$data)->first();
-        return view('dashboard22', ['modules' => $modules, 'alertaAber' => $alertaAbertura, 'alertaFecho' => $alertaFecho]);
+        return view('dashboard22', ['totalequipa'=> $totalequipa,'modules' => $modules, 'alertaAber' => $alertaAbertura, 'alertaFecho' => $alertaFecho]);
     }
 
     public function redirecionarModule($module, $folder = null, $registo = null){

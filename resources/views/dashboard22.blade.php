@@ -1,51 +1,109 @@
 <x-app-layout>
-    <div class="container mt-5">
+    <div class="container mt-5" style="background-color: white !important; padding:1rem;border-radius:10px;">
         <!-- Seção de Cards -->
         <div class="row">
             <style>
-                .card{
-                    border:none;
+                .card {
+                    border: none;
+                }
+
+                .card-text {
+                    color: #007bff;
+                    /* Cor do número */
+                    font-size: 2.3rem;
+                    /* Ajuste o tamanho do número */
+                }
+
+                .card-title {
+                    font-size: 1.2rem;
+                    /* Tamanho do título do card */
+                }
+
+                .card-body i {
+                    color: #5d7aab;
+                    /* Cor do ícone */
+                }
+
+                .icon-container {
+                    min-width: 3rem;
+                    /* Ajuste a largura mínima do ícone */
                 }
             </style>
+
             <!-- Card 1 -->
             <div class="col-sm-3">
                 <div class="card shadow">
-                    <div class="card-body text-center">
-                        <i class="fas fa-users fa-2x"></i>
-                        <h5 class="card-title mt-2">Total Equipa</h5>
-                        <p class="card-text">5</p>
+                    <div class="card-body d-flex align-items-center">
+                        <!-- Ícone à Esquerda -->
+                        <div class="icon-container text-center">
+                            <i class="fas fa-users fa-3x"></i>
+                        </div>
+
+                        <!-- Número e Texto à Direita -->
+                        <div class="text-center flex-grow-1">
+                            <p class="card-text mb-0">{{$totalequipa}}</p>
+                            <h5 class="card-title">Total Equipa</h5>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
+
+
             <!-- Card 2 -->
             <div class="col-sm-3">
                 <div class="card shadow">
-                    <div class="card-body text-center">
-                        <i class="fas fa-tasks fa-2x"></i>
-                        <h5 class="card-title mt-2">Tarefas em falta</h5>
-                        <p class="card-text">0</p>
+                    <div class="card-body d-flex align-items-center">
+                        <!-- Ícone à Esquerda -->
+                        <div class="icon-container text-center">
+                            <i class="fas fa-users fa-3x"></i>
+                        </div>
+
+                        <!-- Número e Texto à Direita -->
+                        <div class="text-center flex-grow-1">
+                            <p class="card-text mb-0">5</p>
+                            <h5 class="card-title">Tarefas em falta</h5>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <!-- Card 3 -->
             <div class="col-sm-3">
                 <div class="card shadow">
-                    <div class="card-body text-center">
-                        <i class="fas fa-chart-line fa-2x"></i>
-                        <h5 class="card-title mt-2">Total de espacos</h5>
-                        <p class="card-text">5</p>
+                    <div class="card-body d-flex align-items-center">
+                        <!-- Ícone à Esquerda -->
+                        <div class="icon-container text-center">
+                            <i class="fas fa-users fa-3x"></i>
+                        </div>
+
+                        <!-- Número e Texto à Direita -->
+                        <div class="text-center flex-grow-1">
+                            <p class="card-text mb-0">5</p>
+                            <h5 class="card-title">Total de espacos</h5>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-sm-3">
                 <div class="card shadow">
-                    <div class="card-body text-center">
-                        <i class="fas fa-chart-line fa-2x"></i>
-                        <h5 class="card-title mt-2">Total de espacos</h5>
-                        <p class="card-text">5</p>
+                    <div class="card-body d-flex align-items-center">
+                        <!-- Ícone à Esquerda -->
+                        <div class="icon-container text-center">
+                            <i class="fas fa-users fa-3x"></i>
+                        </div>
+
+                        <!-- Número e Texto à Direita -->
+                        <div class="text-center flex-grow-1">
+                            <p class="card-text mb-0">5</p>
+                            <h5 class="card-title">Total de espacos</h5>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
 
         <!-- Seção de Tabelas -->

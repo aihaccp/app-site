@@ -1,7 +1,7 @@
 <div class="container" style="margin-top:4rem;margin-bottom:3rem;">
     <div class="align-items-center" style="display: flex;align-items: center;">
         <img src="{{ asset('img/mascote_aihaccp.png') }}" style="height:2.2rem;margin-bottom:1rem;" alt="Jaleca">
-        <h2 style="margin-bottom:1rem; font-size:2rem;"><b>Cria o teu HACCP</b></h2>
+        <h2 style="margin-bottom:1rem; font-size:2rem;"><b>Cria o teu SGSA</b></h2>
     </div>
 
 

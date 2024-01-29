@@ -106,8 +106,7 @@
 
                             <li class="nav-item shadow">
                                 <a href="{{ route('haccp_plan', ['uuid' => session('uuid') ])  }}" class="nav-link px-0 align-middle">
-                                    <i class="fa fa-receipt"></i> <span class="ms-1 d-none d-sm-inline">Plano
-                                        HACCP</span></a>
+                                    <i class="fa fa-receipt"></i> <span class="ms-1 d-none d-sm-inline">SGSA</span></a>
                             </li>
 
 
