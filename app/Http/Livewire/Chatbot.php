@@ -33,7 +33,7 @@ class Chatbot extends Component
 
             try {
                 // Envia a requisição POST para a API
-                $response = $client->request('POST', 'http://localhost:5000/gpt-assistant/', [
+                $response = $client->request('POST', 'http://ec2-3-80-247-173.compute-1.amazonaws.com:8000/gpt-assistant/', [
                     'json' => ['message' => $this->inputMessage]
                 ]);
 

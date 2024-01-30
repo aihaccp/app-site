@@ -28,7 +28,7 @@ class OpenAiController extends Controller
         });
 
         $client = new Client();
-        $url = 'http://localhost:5000/chat-with-assistant/'; // Substitua com a URL correta da sua API FastAPI
+        $url = 'http://ec2-3-80-247-173.compute-1.amazonaws.com:8000/chat-with-assistant/'; // Substitua com a URL correta da sua API FastAPI
 
         try {
             // Supõe-se que $dados é um array ou objeto PHP
