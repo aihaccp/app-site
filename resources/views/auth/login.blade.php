@@ -1,42 +1,61 @@
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
+@extends('layouts.appregisto')
 
-        <x-validation-errors class="mb-4" />
+@section('robot-image', 'img/mascote_fala.png')
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
 
-        <form method="POST" action="{{ route('login') }}" style="margin-top:5%">
+@section('right-section')
+
+    <div class="col-md-8 full-height"
+        style="padding:3.5rem;background-color: #FEF9F2;display: flex; flex-direction: column; ">
+        <div class="row" style>
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+        </div>
+
+        <form method="POST" action="{{ route('login') }}">
             @csrf
 
             <h3>Login</h3>
 
-            <div class="mt-4">
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" class="custom-input form-control" name="email"
+                    value="{{ old('email') }}" required autofocus>
             </div>
 
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" class="custom-input form-control" name="password" required>
+                <a href="/forgot-password" style="color: #020041" class="d-block mt-2">Esqueci-me da Password</a>
+                <!-- Link de recuperação de senha -->
             </div>
 
-            <div class="flex items-center mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-lg">{{ __('Lembrar Credenciais') }}</span>
-                </label>
-
-                <x-button style="display:block; margin-left: auto; color:black; font-weight: 600">
-                    {{ __('Login') }}
-                </x-button>
+            <div class="row">
+                <button type="submit"
+                    style="font-weight:400; background-color: black !important; border:0px; border-radius:0px"
+                    class="btn btn-primary">Login</button>
+            </div>
+            <div class="row">
+                <!-- Botão para registro de empresas -->
+                <a href="/registo-empresa" class="btn btn-secondary mt-3"
+                    style="font-weight:400; background-color: grey !important; border:0px; border-radius:0px">A tua empresa
+                    não
+                    está registada? Regista-a</a>
             </div>
         </form>
-    </x-authentication-card>
-</x-guest-layout>
+    </div>
+@endsection

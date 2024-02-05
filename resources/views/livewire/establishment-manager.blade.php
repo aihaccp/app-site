@@ -71,10 +71,9 @@
                                         @if ($establishment->status === 1) checked @endif>
                                     <label class="form-check-label" for="statusSwitch{{ $establishment->id }}">
                                         @if ($establishment->status === 1)
-                                        Preencher agora
+                                            Preencher agora
                                         @else
-                                        Mais tarde
-
+                                            Mais tarde
                                         @endif
                                     </label>
                                 @endif
@@ -212,7 +211,8 @@
                         <div class="form-group">
                             <button
                                 style="width: 100%;font-weight:400;background-color: black !important;border:0px;border-radius:0px"
-                                wire:click="saveCompany({{ $index }})" class="btn btn-primary">Salvar</button>
+                                wire:click="saveCompany({{ $index }})"
+                                class="btn btn-primary">Guardar</button>
                         </div>
 
                     </div>
@@ -220,6 +220,12 @@
             </div>
         @endforeach
     </div>
+
+    @if ($errorMessage)
+        <div class="alert alert-danger">
+            {{ $errorMessage }}
+        </div>
+    @endif
     <div style="text-align: right;margin-top:2rem;margin-bottom:2rem;">
         <button style="font-weight:400;background-color: black !important;border:0px;border-radius:0px"
             wire:click="goToNextPage" class="btn btn-primary">Seguinte</button>

@@ -81,10 +81,15 @@ class HomeController extends Controller
         $uuid = session('uuid');
         $id_company = Company::where('uuid', $uuid)->first()->id;
         $data = date("Y-m-d");
-        $totalequipa= User::where("id_company", $id_company)->count();
+        $totalequipa= User::where("id_company", $user->id_company)->count();
+        $alertas_count = Alerta::where("id_empresa",$id_company)->count();
+        $alertas =Alerta::where("id_empresa",$id_company)->get();
+        $espacos_count = Area::where("id_empresa",$id_company)->count();
+        $equipamentos_count =Equipamento::where("id_empresa",$id_company)->count();
+        $log_registos = LogRegister::where("company_id",$user->id_company)->get();
         $alertaAbertura = Alerta::where('id_empresa',$id_company)->where('tipo', 0)->orderBy('created_at','desc')->whereDate('created_at',$data)->first();
         $alertaFecho = Alerta::where('id_empresa',$id_company)->where('tipo', 1)->orderBy('created_at','desc')->whereDate('created_at',$data)->first();
-        return view('dashboard22', ['totalequipa'=> $totalequipa,'modules' => $modules, 'alertaAber' => $alertaAbertura, 'alertaFecho' => $alertaFecho]);
+        return view('dashboard22', ['log_registos'=>$log_registos,'equipamentos_count'=>$equipamentos_count,'espacos_count'=>$espacos_count, 'alerta_count'=>$alertas_count,'alertas'=> $alertas,'totalequipa'=> $totalequipa,'modules' => $modules, 'alertaAber' => $alertaAbertura, 'alertaFecho' => $alertaFecho]);
     }
 
     public function redirecionarModule($module, $folder = null, $registo = null){

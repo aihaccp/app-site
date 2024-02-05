@@ -14,6 +14,8 @@ class EstablishmentManager extends Component
     public $organizationUuid = null;
     public $organizationId;
     public $companies = [];
+     public $errorMessage = '';
+     public $allCompaniesSaved = false;
     protected $rules = [
         'companies.*.name' => 'required|string|max:255',
         'companies.*.morada' => 'required|string|max:255',
@@ -70,13 +72,17 @@ class EstablishmentManager extends Component
 
             $this->dispatchBrowserEvent('notify', 'Estabelecimento salvo com sucesso!');
         }
+        $this->allCompaniesSaved = true;
         $this->loadCompanies();
     }
 
     public function goToNextPage()
     {
-
-        return redirect()->to('/registo-espacos?empresa='.$this->organizationUuid);
+        if (!$this->allCompaniesSaved) {
+            $this->errorMessage = 'Por favor, guarde a informação dos estabelecimentos antes de prosseguir.';
+            return;
+        }
+        return redirect()->to('/registo-espacos?empresa=' . $this->organizationUuid);
     }
 
     public function copyAddress($index)

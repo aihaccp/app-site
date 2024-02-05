@@ -79,7 +79,7 @@
         <div class="form-group col-md-12">
             <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="newsletterSubscricao"
-                    wire:model.defer="pessoal.subscreverNewsletter">
+                    wire:model.defer="pessoal.subscreverNewsletter" value="0">
                 <label class="custom-control-label" for="newsletterSubscricao">Aceito receber newsletters e informações
                     privilegiadas</label>
             </div>

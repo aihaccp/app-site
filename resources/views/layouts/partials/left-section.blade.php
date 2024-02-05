@@ -9,5 +9,5 @@
 
 <div class="mobile-logo col-md-5">
     <img class="mobile-logo" src="img/logotipoAihaccp.png" alt="Logo"
-        style="width: 150px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        style="width: 150px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, 30%);">
 </div>

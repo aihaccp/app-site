@@ -62,7 +62,7 @@
 
                         <!-- Número e Texto à Direita -->
                         <div class="text-center flex-grow-1">
-                            <p class="card-text mb-0">5</p>
+                            <p class="card-text mb-0">{{$alerta_count}}</p>
                             <h5 class="card-title">Tarefas em falta</h5>
                         </div>
                     </div>
@@ -80,8 +80,8 @@
 
                         <!-- Número e Texto à Direita -->
                         <div class="text-center flex-grow-1">
-                            <p class="card-text mb-0">5</p>
-                            <h5 class="card-title">Total de espacos</h5>
+                            <p class="card-text mb-0">{{$equipamentos_count}}</p>
+                            <h5 class="card-title">Total de Equipamentos</h5>
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
 
                         <!-- Número e Texto à Direita -->
                         <div class="text-center flex-grow-1">
-                            <p class="card-text mb-0">5</p>
+                            <p class="card-text mb-0">{{$espacos_count}}</p>
                             <h5 class="card-title">Total de espacos</h5>
                         </div>
                     </div>
@@ -116,45 +116,51 @@
                         <tr>
                             <th>ID</th>
                             <th>Tarefa</th>
-                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $id =0;
+                        @endphp
+                        @foreach($alertas as $alerta)
+                        @php
+                        $id +=1;
+                        @endphp
                         <tr>
-                            <td>1</td>
-                            <td>Atualizar Documentação</td>
-                            <td>Pendente</td>
+                            <td>{{$id}}</td>
+                            <td>{{$alerta->mensagem}}</td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Revisar Código</td>
-                            <td>Em Andamento</td>
-                        </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>
             <!-- Tabela de Logs de Registros -->
             <div class="col-md-6">
-                <h2>Logs de Registros</h2>
+                <h2>Logs de Registos</h2>
                 <table class="table">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Evento</th>
-                            <th>Data</th>
+                            <th>Funcionário</th>
+                            <th>Ação</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $id =0;
+                        @endphp
+                        @foreach($log_registos as $log_registo )
+                        @php
+                        $id +=1;
+                        @endphp
                         <tr>
-                            <td>1</td>
-                            <td>Login do Usuário</td>
-                            <td>2024-01-15</td>
+                            <td>{{$id}}</td>
+                            <td>{{$log_registo->user->name}}</td>
+                            <td>{{$log_registo->acao}}</td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Alteração de Senha</td>
-                            <td>2024-01-16</td>
-                        </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>
@@ -173,12 +179,11 @@
     </script>
     <div class="modal" id="myModal">
         <div class="modal-dialog">
-            <div class="modal-content" style="background-color: rgb(250, 247, 238);border: 0rem;">
+            <div class="modal-content" style="background-color: rgb(250, 250, 250);border: 0rem;">
                 <!-- Cabeçalho do modal -->
                 <!-- Corpo do modal -->
                 <div class="modal-body text-center d-flex flex-column align-items-center">
-                    <h3 class="mb-2" style="font-weight: bold;color:black">{{ $alertaAber->mensagem }}</h3>
-                    <img src="img/notification.png" alt="Verificação" style="width: 8rem" class="img-fluid mb-3">
+                    <img src="img/alerta_jaleca.png" alt="Verificação" style="width: 20rem" class="img-fluid mb-3">
                     <a href="modules/verificacoes/folders/abertura/adicionar?uuid={{ session('uuid') }}"
                         style="background-color: #5d7aab; border:0px; font-weight: 600"
                         class="btn btn-primary">Verificar</a>
@@ -198,12 +203,11 @@
     </script>
     <div class="modal" id="myModal">
         <div class="modal-dialog">
-            <div class="modal-content" style="background-color: rgb(250, 247, 238);border: 0rem;">
+            <div class="modal-content" style="background-color: rgb(250, 250, 250);border: 0rem;">
                 <!-- Cabeçalho do modal -->
                 <!-- Corpo do modal -->
                 <div class="modal-body text-center d-flex flex-column align-items-center">
-                    <h3 class="mb-2" style="font-weight: bold;color:black">{{ $alertaFecho->mensagem }}</h3>
-                    <img src="img/notification.png" alt="Verificação" style="width: 8rem" class="img-fluid mb-3">
+                    <img src="img/notification.png" alt="Verificação" style="width: 20rem" class="img-fluid mb-3">
                     <a href="modules/verificacoes/folders/fecho/adicionar?uuid={{ session('uuid') }}"
                         style="background-color: #5d7aab; border:0px; font-weight: 600"
                         class="btn btn-primary">Verificar</a>

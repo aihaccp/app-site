@@ -11,6 +11,8 @@ class EspacoManager extends Component
     public $isBlocked = false;
     public $espacos = [];
     public $establishmentId;
+    public $errorMessage = '';
+    public $allCompaniesSaved = false;
     public function mount($establishmentId)
     {
         $this->establishmentId = $establishmentId;
@@ -42,11 +44,11 @@ class EspacoManager extends Component
         $establishmentId = $this->establishmentId;
 
         foreach ($this->espacos as $space) {
-            for ($i=0; $i < $space['quantidade']; $i++) {
+            for ($i = 0; $i < $space['quantidade']; $i++) {
                 $area = new Area;
                 $area->id_empresa = $establishmentId;
-                $a=1+$i;
-                $area->designacao = $space['nome'].$a;
+                $a = 1 + $i;
+                $area->designacao = $space['nome'] . $a;
                 $area->save();
                 DB::table('plano_higienizacao')->insert([
                     'id_empresa' => $establishmentId,
@@ -56,6 +58,7 @@ class EspacoManager extends Component
 
         }
         $this->isBlocked = true; // Bloquear após salvar
+        $this->allCompaniesSaved = true;
         session()->flash('message', 'Espaços atualizados com sucesso!');
     }
     public function render()

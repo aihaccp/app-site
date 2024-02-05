@@ -56,7 +56,7 @@ class RegistoPessoal extends Component
             'id_company' => $this->organizationId,
         ]);
 
-        Mail::to($user->email)->send(new PasswordGenerated($generatedPassword));
+        //Mail::to($user->email)->send(new PasswordGenerated($generatedPassword));
 
         return redirect()->to('/confirmacao-registo?empresa='.$this->organizationUuid);
     }

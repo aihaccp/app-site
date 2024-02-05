@@ -10,4 +10,5 @@
         @livewire('establishment-manager', ['organizationId' => Request::input('organizacao')])
     </div>
 </div>
+
 @endsection

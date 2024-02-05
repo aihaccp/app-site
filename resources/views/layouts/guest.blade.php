@@ -30,6 +30,7 @@
 </head>
 
 <body>
+
     <div>
         {{ $slot }}
     </div>
