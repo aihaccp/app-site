@@ -11,7 +11,7 @@ class Area extends Model
     use HasFactory;
 
     protected $table = 'area';
-
+    protected $fillable = ['designacao', 'id_empresa'];
     public static function boot(){
         parent::boot();
         self::creating(function ($model) {

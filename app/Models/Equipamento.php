@@ -11,6 +11,15 @@ class Equipamento extends Model
     use HasFactory;
 
     protected $table = 'equipamento';
+    protected $fillable = [
+        'nome',
+        'temp_max',
+        'temp_min',
+        'id_empresa',
+        'tipo',
+        'id_area'
+        // Adicione outros campos que você deseja que sejam atribuíveis em massa
+    ];
 
     public static function boot(){
         parent::boot();

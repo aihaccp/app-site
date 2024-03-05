@@ -13,6 +13,8 @@ class Folder extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'slug','module_id','id_company'];
+
     public function module()
     {
         return $this->belongsTo(Module::class);

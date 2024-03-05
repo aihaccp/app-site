@@ -36,7 +36,9 @@ class FolderController extends Controller
                 }
 
             } else {
-                abort(404);
+                return response()->json([
+                    'error' => 'Sem ficheiros, por favor adicione!'
+                ], 200);
             }
         }else{
             return view('files', compact('module', 'folder', 'files'));

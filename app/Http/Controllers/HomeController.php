@@ -55,6 +55,31 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function espacos()
+    {
+        $uuid = session('uuid');
+        $id_company = Company::where('uuid', $uuid)->first()->id;
+        $espacos = Area::where('id_empresa',$id_company)->get();
+        return view('espacos')->with(['espacos'=> $espacos]);
+    }
+
+    public function edi_equi($espacoId, $equipamentoId)
+    {
+        $espaco = Area::where('uuid',$espacoId)->first();
+        $equipamento = Equipamento::where('uuid',$equipamentoId)->first();
+        return view('edit.equipamentos')->with([ 'equipamento' => $equipamento, 'area'=> $espaco]);
+    }
+    public function add_equi($espacoId)
+    {
+        $espaco = Area::where('uuid',$espacoId)->first();
+        return view('edit.add_equipamento')->with([ 'area'=> $espaco]);
+    }
+    public function equipamentos($area)
+    {
+        $area1 = Area::where('uuid',$area)->first();
+        $equipamentos= $area1->equipments;
+        return view('equipamentos')->with([ 'equipamentos' => $equipamentos, 'area'=> $area1]);
+    }
     public function create_user(Request $request)
     {
         $generatedPassword = Str::random(12);

@@ -43,6 +43,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
 
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+    Route::get('/configuracao/espacos', [HomeController::class, 'espacos'])->name('espacos');
+    Route::get('/configuracao/equipamentos/{equi}', [HomeController::class, 'equipamentos'])->name('equipamentos');
+    Route::get('/configuracao/equipamentos/{espaco}/{equi}', [HomeController::class, 'edi_equi'])->name('equipamentos.edit');
+    Route::get('/configuracao/addequipamento/{espaco}', [HomeController::class, 'add_equi'])->name('equipamentos.add');
 
     Route::get('/dashboard/{module}/{folder}/adicionar', [HomeController::class, 'novoRegisto2'])->name('novoRegisto2');
 

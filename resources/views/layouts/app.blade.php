@@ -126,9 +126,14 @@
                                 </a>
                             </li>
                             <li class="nav-item shadow">
-                                <a href="/modules/politica" class="nav-link px-0 align-middle">
+                                <a href="/modules/documentos?uuid={{session('uuid')}}" class="nav-link px-0 align-middle">
                                     <i class="fa fa-folder-open"></i> <span
                                         class="ms-1 d-none d-sm-inline">Documentos</span> </a>
+                            </li>
+                            <li class="nav-item shadow">
+                                <a href="/modules/documentos?uuid={{session('uuid')}}" class="nav-link px-0 align-middle">
+                                    <i class="fa fa-sliders-h" style="color:black"></i> <span
+                                        class="ms-1 d-none d-sm-inline">Configuração</span> </a>
                             </li>
                             <li class="nav-item shadow">
                                 <a href="/chat?uuid={{session('uuid')}}" class="nav-link px-0 align-middle"
