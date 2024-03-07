@@ -66,7 +66,7 @@
 
             <!-- Card Total de Espaços -->
             <div class="col-md-3">
-                <a href="http://127.0.0.1:8000/configuracao/espacos?uuid={{session('uuid')}}">
+                <a href="/configuracao/espacos?uuid={{session('uuid')}}">
                     <div class="card shadow h-100">
                         <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
                             <div class="icon-container mb-2">
