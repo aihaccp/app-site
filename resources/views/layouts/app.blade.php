@@ -82,7 +82,18 @@
             font-weight: 500;
         }
     </style>
+    @php
+        use App\Models\Company;
+        use Illuminate\Support\Facades\Session;
 
+        $company_ph = null;
+
+        if (Session::has('uuid')) {
+            $uuid = Session::get('uuid');
+            $company_ph = Company::where('uuid', $uuid)->first()->plan_phasis;
+
+        }
+    @endphp
     <div class="min-h-screen bg-gray-100" style="background-color:#FEF9F2">
         <div class="container-fluid">
             <div class="row flex-nowrap">
@@ -99,44 +110,51 @@
                             class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
                             id="menu">
                             <li class="nav-item shadow">
-                                <a href="{{ route('dashboard', ['uuid' => session('uuid') ])  }}" class="nav-link align-middle px-0">
+                                <a href="{{ route('dashboard', ['uuid' => session('uuid')]) }}"
+                                    class="nav-link align-middle px-0">
                                     <i class="fas fa-user"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
                                 </a>
                             </li>
 
                             <li class="nav-item shadow">
-                                <a href="{{ route('haccp_plan', ['uuid' => session('uuid') ])  }}" class="nav-link px-0 align-middle">
+                                <a href="{{ route('haccp_plan', ['uuid' => session('uuid')]) }}"
+                                    class="nav-link px-0 align-middle">
                                     <i class="fa fa-receipt"></i> <span class="ms-1 d-none d-sm-inline">SGSA</span></a>
                             </li>
 
 
                             <li class="nav-item shadow">
-                                <a href="/modules/registos?uuid={{session('uuid')}}" class="nav-link px-0 align-middle">
+                                <a href="/modules/registos?uuid={{ session('uuid') }}" @if($company_ph <=3) style="pointer-events: none;opacity: 0.3;" @endif
+                                    class="nav-link px-0 align-middle">
                                     <i class="fas fa-chart-line"></i> <span
                                         class="ms-1 d-none d-sm-inline">Monitorização</span> </a>
                             </li>
                             <li class="nav-item shadow">
-                                <a href="/modules/verificacoes?uuid={{session('uuid')}}" class="nav-link px-0 align-middle">
+                                <a href="/auditorias?uuid={{ session('uuid') }}" @if($company_ph <=3) style="pointer-events: none;opacity: 0.3;" @endif
+                                    class="nav-link px-0 align-middle">
                                     <i class="fa fa-tasks"></i> <span class="ms-1 d-none d-sm-inline">Auditoria</span>
                                 </a>
                             </li>
                             <li class="nav-item shadow">
-                                <a href="{{ route('gerente-show', ['uuid' => session('uuid')]) }}" class="nav-link px-0 align-middle">
+                                <a href="{{ route('gerente-show', ['uuid' => session('uuid')]) }}"
+                                    class="nav-link px-0 align-middle">
                                     <i class="fa fa-users"></i> <span class="ms-1 d-none d-sm-inline">Equipa</span>
                                 </a>
                             </li>
                             <li class="nav-item shadow">
-                                <a href="/modules/documentos?uuid={{session('uuid')}}" class="nav-link px-0 align-middle">
+                                <a href="/modules/documentos?uuid={{ session('uuid') }}"
+                                    class="nav-link px-0 align-middle">
                                     <i class="fa fa-folder-open"></i> <span
                                         class="ms-1 d-none d-sm-inline">Documentos</span> </a>
                             </li>
                             <li class="nav-item shadow">
-                                <a href="/modules/documentos?uuid={{session('uuid')}}" class="nav-link px-0 align-middle">
+                                <a href="/configuracao?uuid={{ session('uuid') }}" @if($company_ph <=3) style="pointer-events: none;opacity: 0.3;" @endif
+                                    class="nav-link px-0 align-middle">
                                     <i class="fa fa-sliders-h" style="color:black"></i> <span
                                         class="ms-1 d-none d-sm-inline">Configuração</span> </a>
                             </li>
                             <li class="nav-item shadow">
-                                <a href="/chat?uuid={{session('uuid')}}" class="nav-link px-0 align-middle"
+                                <a href="/chat?uuid={{ session('uuid') }}" class="nav-link px-0 align-middle"
                                     style="display: flex;align-items: center;">
                                     <i class="fs-4 bi-people"><img src="{{ asset('img/mascote_aihaccp.png') }}"
                                             style="height:1.5rem" alt="Jaleca"></i> <span

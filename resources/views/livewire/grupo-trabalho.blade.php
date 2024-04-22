@@ -43,8 +43,6 @@
     <button style="font-weight:40 0;background-color: black !important;border:0px;border-radius:0px;margin-top:1.5rem;"
         wire:click="adicionarGrupo" class="btn btn-primary mb-3">+ Adicionar</button>
     <div class="modal-footer">
-        <button style="font-weight:40 0;background-color: black !important;border:0px;border-radius:0px" wire:click=""
-            class="btn btn-primary">Cancelar</button>
         <button style="font-weight:400;background-color: black !important;border:0px;border-radius:0px"
             wire:click="salvar" class="btn btn-primary">Guardar</button>
     </div>

@@ -9,4 +9,5 @@ class Frequencia extends Model
 {
     use HasFactory;
     protected $table = 'frequencia';
+
 }

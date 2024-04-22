@@ -24,7 +24,12 @@
 
 
                             </td>
-                            <td>Brevemente</td>
+                            <td>
+                              Brevemente
+                            </td>
+
+
+
                             <!-- Adicione mais dados conforme necessário -->
                         </tr>
                     @endforeach

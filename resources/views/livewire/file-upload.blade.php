@@ -47,8 +47,7 @@
     </form>
 
     <div class="modal-footer">
-        <button style="font-weight:400;background-color: black !important;border:0px;border-radius:0px" wire:click=""
-            class="btn btn-primary">Cancelar</button>
+
         <button style="font-weight:400;background-color: black !important;border:0px;border-radius:0px"
             wire:click="salvar" class="btn btn-primary">Guardar</button>
     </div>

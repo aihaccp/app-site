@@ -1,25 +1,27 @@
 <div class="container" style="margin-top:4rem;margin-bottom:3rem;">
     <div class="align-items-center" style="display: flex;align-items: center;">
         <img src="{{ asset('img/mascote_aihaccp.png') }}" style="height:2.2rem;margin-bottom:1rem;" alt="Jaleca">
-        <h2 style="margin-bottom:1rem; font-size:2rem;"><b>Cria o teu SGSA</b></h2>
+        <h2 style="margin-bottom:1rem; font-size:2rem;"><b>Preenche a informação do estabelecimento</b></h2>
     </div>
+
 
 
     <div class="row">
         <!-- Coluna 1 -->
         @php
-            $i=1;
+            $i = 1;
         @endphp
         @foreach ($cards_plan_haccp as $card)
             <div class="col-md-12" style="margin-bottom:2rem;">
-                <div class="card shadow" style="border-color:green; border:1.5rem;">
+                <div class="card shadow">
                     <button wire:click="toggleModal('{{ $card->livewire }}','{{ $card->nome }}')">
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <!-- Circle with a number instead of an icon -->
                                 <div class="col-1 text-center">
                                     <div class="circle">
-                                        <span class="number">{{$i}}</span> <!-- Replace '1' with the desired number -->
+                                        <span class="number">{{ $i }}</span>
+                                        <!-- Replace '1' with the desired number -->
                                     </div>
                                 </div>
                                 <!-- Title and explanatory sentence in the middle -->
@@ -35,7 +37,7 @@
                 </div>
             </div>
             @php
-                $i=1+$i;
+                $i = 1 + $i;
             @endphp
         @endforeach
         <style>
@@ -46,19 +48,18 @@
                 /* Circle size */
                 border-radius: 50%;
                 /* Makes the div circular */
-                background-color: #f8f9fa;
+                background-color: #c5c5c5;
                 /* Circle color, change as needed */
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                border: 1px solid #000;
                 /* Circle border */
             }
 
             .number {
                 font-size: 20px;
                 /* Number size, change as needed */
-                color: #000;
+                color: #ffffff;
                 /* Number color, change as needed */
             }
 
@@ -76,10 +77,8 @@
                 <div class="modal-content" style="height: 100vh;background-color:#FEF9F2">
                     <div class="modal-header">
                         <h5 class="modal-title">{{ $titulo }}</h5>
-                        <button type="button" class="close"
-                            wire:click="toggleModal('{{ $content }}','{{ $titulo }}')">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button style="font-weight:40 0;background-color: black !important;border:0px;border-radius:0px"
+                        wire:click="toggleModal('{{ $content }}','{{ $titulo }}')" class="btn btn-primary">Voltar Atrás</button>
                     </div>
 
 

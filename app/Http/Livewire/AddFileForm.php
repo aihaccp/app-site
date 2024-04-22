@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Company;
 use App\Models\File;
 use App\Models\Folder;
+use App\Models\Module;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -19,8 +21,11 @@ class AddFileForm extends Component
 
     public function mount()
     {
-        $this->id_company= Auth::user()->id_company;
-        $this->folders = Folder::where("id_company",103)->get(); // Carrega as pastas disponíveis
+        $uuid = session('uuid');
+        $id_company = Company::where('uuid', $uuid)->first()->id;
+        $this->id_company= $id_company;
+        $module = Module::where('slug', "documentos")->firstOrFail();
+        $this->folders =  $module->folders()->where('id_company', $id_company)->get();
     }
 
     public function save()

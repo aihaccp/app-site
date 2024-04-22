@@ -17,7 +17,9 @@ class InfoEstabelecimento extends Component
         'companie.cae' => 'required|string',
         'companie.localidade' => 'required|string|max:255',
         'companie.n_users' => 'required|integer|min:1',
-        // Adicione aqui outras regras de validação para os campos restantes
+        'companie.n_funcionarios' => 'required|integer|min:1',
+        'companie.tipo_estabelecimento' => 'required|string|max:255',
+        'companie.titulo_licenciamento' => 'required|string|max:255',
     ];
 
     public function mount($estabelecimentoUui)
@@ -35,6 +37,9 @@ class InfoEstabelecimento extends Component
                 'cp' => $this->companie['cp'],
                 'localidade' => $this->companie['localidade'],
                 'n_users' => $this->companie['n_users'],
+                'n_funcionarios' => $this->companie['n_funcionarios'],
+                'tipo_estabelecimento' => $this->companie['tipo_estabelecimento'],
+                'titulo_licenciamento' => $this->companie['titulo_licenciamento'],
                 'cae' => $this->companie['cae'],
             ]);
             $this->emit('refreshPage');

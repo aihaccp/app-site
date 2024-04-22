@@ -20,6 +20,17 @@
                 </div>
             </div>
         @endforeach
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow">
+
+                    <!-- Imagem do Estabelecimento -->
+                    <img src="/img/add_estabelecimento.jpg" alt="Add" class="card-img-top">
+
+                    <!-- Ícone Padrão para Estabelecimentos sem Imagem -->
+
+
+            </div>
+        </div>
     </div>
     <style>.card-img-top {
         width: 100%; /* Faz a imagem ocupar toda a largura do card */

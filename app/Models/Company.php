@@ -15,6 +15,9 @@ class Company extends Model
         'morada',
         'cp',
         'localidade',
+        'titulo_licenciamento',
+        'n_funcionarios',
+        'tipo_estabelecimento',
         'n_users',
         'cae',
         // Adicione outros campos que você deseja que sejam atribuíveis em massa

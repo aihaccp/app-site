@@ -14,6 +14,11 @@ class GrupoTrabalho extends Component {
         $this->grupos = \App\Models\GrupoTrabalho::where('id_empresa', $this->estabelecimento)->get()->toArray();
     }
 
+    public function updated()
+{
+    $isFormFilled = true; // Implemente essa lógica baseada em seus campos
+    $this->emit('formFilledStatusChanged', $isFormFilled ? 'P' : 'N');
+}
 
     public function adicionarGrupo() {
         $this->grupos[] = ['nome_cargo' => '', 'name_resp' => ''];
@@ -43,7 +48,12 @@ class GrupoTrabalho extends Component {
             }
             $grupotrabalho->nome_cargo = $grupo['nome_cargo'];
             $grupotrabalho->name_resp = $grupo['name_resp'];
-            $grupotrabalho->name_outsourcing = $grupo['name_outsourcing'];
+            if (isset($grupo['name_outsourcing'])) {
+                $grupotrabalho->name_outsourcing = $grupo['name_outsourcing'];
+            } else {
+                $grupotrabalho->name_outsourcing = null; // Or any other default handling.
+            }
+
             $grupotrabalho->id_empresa = $this->estabelecimento;
             $grupotrabalho->save();
         }

@@ -1,6 +1,6 @@
 @extends('layouts.appregisto')
 
-@section('robot-image', 'img/mascote_fala.png')
+@section('robot-image', 'img/mascote_2.png')
 
 @section('right-section')
 <div class="col-md-8 full-height" style="background-color: #FEF9F2; display: flex; flex-direction: column; padding-top:3.5rem">
@@ -10,5 +10,4 @@
         @livewire('establishment-manager', ['organizationId' => Request::input('organizacao')])
     </div>
 </div>
-
 @endsection

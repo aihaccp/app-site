@@ -23,7 +23,9 @@ class EstablishmentManager extends Component
         'companies.*.cae' => 'required|string',
         'companies.*.localidade' => 'required|string|max:255',
         'companies.*.n_users' => 'required|integer|min:1',
-        // Adicione aqui outras regras de validação para os campos restantes
+        'companies.*.n_funcionarios' => 'required|integer|min:1',
+        'companies.*.tipo_estabelecimento' => 'required|string|max:255',
+        'companies.*.titulo_licenciamento' => 'required|string|max:255',
     ];
 
     public function mount($organizationId = null)
@@ -66,6 +68,9 @@ class EstablishmentManager extends Component
                 'morada' => $companyData['morada'],
                 'cp' => $companyData['cp'],
                 'localidade' => $companyData['localidade'],
+                'n_funcionarios' => $companyData['n_funcionarios'],
+                'tipo_estabelecimento' => $companyData['tipo_estabelecimento'],
+                'titulo_licenciamento' => $companyData['titulo_licenciamento'],
                 'n_users' => $companyData['n_users'],
                 'cae' => $companyData['cae'],
             ]);

@@ -1,4 +1,3 @@
 <x-app-layout>
-    @livewire('haccp-plan')
-
+    @livewire('multi-step-form')
 </x-app-layout>
