@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Company;
 use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
@@ -23,7 +24,17 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                $user = Auth::guard($guard)->user();
+
+                $firstCompany = Company::where("organition_id", $user->id_company)->first();
+                session(['uuid' => $firstCompany->uuid]);
+                // Redirect to the dashboard with the UUID of the first company
+                if ($firstCompany) {
+                    return redirect('/dashboard?uuid=' . $firstCompany->uuid);
+                } else {
+                    // Handle cases where there is no company associated with the user
+                    return redirect(RouteServiceProvider::HOME);
+                }
             }
         }
 

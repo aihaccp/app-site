@@ -133,6 +133,11 @@
                 <input type="number" wire:model.defer="companie.titulo_licenciamento"
                     class="custom-input form-control">
             </div>
+            <div class="form-group col-md-6">
+                <label>Licenciamento emitido por:</label>
+                <input type="text" wire:model.defer="companie.emitido_licenciamento"
+                    class="custom-input form-control">
+            </div>
         </div>
     </div>
     <div class="modal-footer">

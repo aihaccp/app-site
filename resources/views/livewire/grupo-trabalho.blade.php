@@ -10,7 +10,7 @@
             <div class="col-md-4">
                 <label>Tarefa:</label>
                 <input type="text" wire:model="grupos.{{ $index }}.nome_cargo" class="form-control"
-                    placeholder="Cargo">
+                    placeholder="Tarefa">
             </div>
             <!-- Coluna para o Nome -->
             <div class="col-md-4">

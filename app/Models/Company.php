@@ -20,6 +20,7 @@ class Company extends Model
         'tipo_estabelecimento',
         'n_users',
         'cae',
+        'emitido_licenciamento',
         // Adicione outros campos que você deseja que sejam atribuíveis em massa
     ];
 

@@ -20,6 +20,8 @@ class InfoEstabelecimento extends Component
         'companie.n_funcionarios' => 'required|integer|min:1',
         'companie.tipo_estabelecimento' => 'required|string|max:255',
         'companie.titulo_licenciamento' => 'required|string|max:255',
+        'companie.emitido_licenciamento' => 'required|string|max:255',
+
     ];
 
     public function mount($estabelecimentoUui)
@@ -41,6 +43,7 @@ class InfoEstabelecimento extends Component
                 'tipo_estabelecimento' => $this->companie['tipo_estabelecimento'],
                 'titulo_licenciamento' => $this->companie['titulo_licenciamento'],
                 'cae' => $this->companie['cae'],
+                'emitido_licenciamento'=> $this->companie['emitido_licenciamento'],
             ]);
             $this->emit('refreshPage');
         }

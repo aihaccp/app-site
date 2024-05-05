@@ -42,6 +42,7 @@
             <div class="col-md-3">
                 <div class="card shadow h-100">
                     <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
+
                         <div class="icon-container mb-2">
                             <i class="fas fa-exclamation-triangle fa-3x"></i>
                         </div>
