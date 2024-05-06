@@ -3,7 +3,7 @@
         <div class="col-md-6">
             <form>
                 <div class="mb-3">
-                    <label for="name" class="form-label">Nome do Folder</label>
+                    <label for="name" class="form-label">Nome do Pré-Requisito</label>
                     <input type="text" class="form-control" id="name" wire:model="name" placeholder="Nome do Folder">
                     @error('name') <span class="text-danger">{{ $message }}</span> @enderror
 
@@ -25,11 +25,11 @@
                     @error('disabled') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
 
-                <button type="button" class="btn btn-primary" style="background-color: black; border: 0;" wire:click="addFolder">Adicionar Folder</button>
+                <button type="button" class="btn btn-primary" style="background-color: black; border: 0;" wire:click="addFolder">Adicionar Pré-Requisito</button>
             </form>
         </div>
         <div class="col-md-6">
-            <h4>Folders existentes</h4>
+            <h4>Pré-Requisitos existentes</h4>
             <div class="list-group">
                 @foreach($folders as $folder)
                     <a href="#" class="list-group-item list-group-item-action d-flex align-items-center">
