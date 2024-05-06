@@ -8,8 +8,13 @@ use Illuminate\Support\Str;
 
 class PrerequisitosManager extends Component
 {
-    public $name, $slug, $icon, $disabled;
+    public $name, $slug, $icon;
+    public $disabled = 1;
 
+    public function mount()
+    {
+        $this->disabled = 1;
+    }
     public function render()
     {
         $folders = FolderPrerequisito::all();
@@ -23,7 +28,7 @@ class PrerequisitosManager extends Component
         $this->validate([
             'name' => 'required|string|max:255',
             'icon' => 'required|string|max:150',
-            'disabled' => 'required|boolean',
+            'disabled' => 'required',
         ]);
 
         $slug = Str::lower(Str::slug($this->name, '-'));
