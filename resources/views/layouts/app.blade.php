@@ -207,7 +207,7 @@
                             <li class="nav-item shadow">
                                 <a href="/pre-requesitos?uuid={{ session('uuid') }}" class="nav-link px-0 align-middle"
                                     style="display: flex;align-items: center;">
-                                    <i class="fas fa-chart-line"></i>
+                                    <i class="fas fa-bullhorn"></i>
                                     <span class="ms-1 d-none d-sm-inline">Pré-Requisitos</span>
                                 </a>
                             </li>
