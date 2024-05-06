@@ -92,6 +92,11 @@ Route::get('/equipamentos/qrcode/{uuid}', function ($uuid) {
             return view('auditorias.show');
 
         });
+        Route::get('/pre-requesitos', function () {
+
+            return view('prerequisitos');
+
+        });
 
         Route::middleware('role:admin')->group(function () {
             Route::get('/admin', function () {

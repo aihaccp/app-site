@@ -37,6 +37,90 @@
 </head>
 
 <body class="font-sans antialiased">
+
+    <button class="btn rounded-circle fixed-bottom-right shadow" id="myButton" data-bs-toggle="tooltip"
+        data-bs-placement="top" title="👋Tens dúvidas? A AiJaleca  ajuda-te!🫵" onclick="redirectToPageX()">
+        <img src="{{ asset('img/mascote_aihaccp.png') }}" alt="Jaleca">
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname; // Obtem o caminho da URL atual
+            const myButton = document.getElementById('myButton');
+
+            // Inicializa o tooltip, assumindo que será necessário em outras páginas
+            const myButtonTooltip = new bootstrap.Tooltip(myButton, {
+                trigger: 'manual' // Desativa triggers automáticos para controlar manualmente
+            });
+
+            if (currentPage.includes('/chat')) {
+                // Remove o botão e o tooltip se estiver na página '/chat'
+                myButtonTooltip.dispose(); // Limpa e remove o tooltip
+                myButton.remove(); // Remove o botão do DOM
+            } else {
+                // Mostra o tooltip nas outras páginas onde o botão é relevante
+                myButtonTooltip.show();
+
+                // Evento de clique para redirecionar com UUID
+                myButton.addEventListener('click', function() {
+                    const uuid =
+                        "{{ session('uuid') }}"; // Variável de sessão passada do Laravel para JavaScript
+                    window.location.href = "/chat?uuid=" + encodeURIComponent(uuid);
+                    myButtonTooltip.hide(); // Esconde o tooltip após o clique
+                });
+            }
+        });
+    </script>
+
+    <style>
+        .fixed-bottom-right {
+            background-color: #e2edff;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            /* Define a largura do botão */
+            height: 50px;
+            /* Define a altura do botão */
+            padding: 0;
+            /* Remove o padding para que a imagem preencha todo o botão */
+            border: none;
+            /* Remove bordas */
+            z-index: 1050;
+        }
+
+        .fixed-bottom-right img {
+            width: 100%;
+            /* Faz a imagem preencher todo o botão */
+            height: 100%;
+            /* Mantém a proporção da imagem */
+            border-radius: 50%;
+            /* Arredonda as bordas da imagem */
+        }
+
+        .bs-tooltip-auto[x-placement^=top] .arrow::before,
+        .bs-tooltip-top .arrow::before {
+            top: 0;
+            border-width: .4rem .4rem 0;
+            border-top-color: #ffffff;
+        }
+
+        .tooltip-inner {
+            max-width: 200px;
+            padding: .25rem .5rem;
+            color: #000;
+            font-weight: 700;
+            text-align: center;
+            background-color: #ffff;
+            border-radius: .25rem;
+        }
+        .tooltip.bs-tooltip-top .tooltip-inner {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); /* Sombra padrão do Bootstrap */
+    }
+
+
+    </style>
+
     <x-banner />
     <style>
         .dropdown-item.active,
@@ -91,7 +175,6 @@
         if (Session::has('uuid')) {
             $uuid = Session::get('uuid');
             $company_ph = Company::where('uuid', $uuid)->first()->plan_phasis;
-
         }
     @endphp
     <div class="min-h-screen bg-gray-100" style="background-color:#FEF9F2">
@@ -121,16 +204,24 @@
                                     class="nav-link px-0 align-middle">
                                     <i class="fa fa-receipt"></i> <span class="ms-1 d-none d-sm-inline">SGSA</span></a>
                             </li>
-
+                            <li class="nav-item shadow">
+                                <a href="/pre-requesitos?uuid={{ session('uuid') }}" class="nav-link px-0 align-middle"
+                                    style="display: flex;align-items: center;">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span class="ms-1 d-none d-sm-inline">Pré-Requisitos</span>
+                                </a>
+                            </li>
 
                             <li class="nav-item shadow">
-                                <a href="/modules/registos?uuid={{ session('uuid') }}" @if($company_ph <=3) style="pointer-events: none;opacity: 0.3;" @endif
+                                <a href="/modules/registos?uuid={{ session('uuid') }}"
+                                    @if ($company_ph <= 3) style="pointer-events: none;opacity: 0.3;" @endif
                                     class="nav-link px-0 align-middle">
                                     <i class="fas fa-chart-line"></i> <span
                                         class="ms-1 d-none d-sm-inline">Monitorização</span> </a>
                             </li>
                             <li class="nav-item shadow">
-                                <a href="/auditorias?uuid={{ session('uuid') }}" @if($company_ph <=3) style="pointer-events: none;opacity: 0.3;" @endif
+                                <a href="/auditorias?uuid={{ session('uuid') }}"
+                                    @if ($company_ph <= 3) style="pointer-events: none;opacity: 0.3;" @endif
                                     class="nav-link px-0 align-middle">
                                     <i class="fa fa-tasks"></i> <span class="ms-1 d-none d-sm-inline">Auditoria</span>
                                 </a>
@@ -148,19 +239,13 @@
                                         class="ms-1 d-none d-sm-inline">Documentos</span> </a>
                             </li>
                             <li class="nav-item shadow">
-                                <a href="/configuracao?uuid={{ session('uuid') }}" @if($company_ph <=3) style="pointer-events: none;opacity: 0.3;" @endif
+                                <a href="/configuracao?uuid={{ session('uuid') }}"
+                                    @if ($company_ph <= 3) style="pointer-events: none;opacity: 0.3;" @endif
                                     class="nav-link px-0 align-middle">
                                     <i class="fa fa-sliders-h" style="color:black"></i> <span
                                         class="ms-1 d-none d-sm-inline">Configuração</span> </a>
                             </li>
-                            <li class="nav-item shadow">
-                                <a href="/chat?uuid={{ session('uuid') }}" class="nav-link px-0 align-middle"
-                                    style="display: flex;align-items: center;">
-                                    <i class="fs-4 bi-people"><img src="{{ asset('img/mascote_aihaccp.png') }}"
-                                            style="height:1.5rem" alt="Jaleca"></i> <span
-                                        class="ms-1 d-none d-sm-inline">Jaleca</span>
-                                </a>
-                            </li>
+
                         </ul>
                         <hr>
 
