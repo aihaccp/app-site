@@ -9,10 +9,7 @@
                     <i class="fas fa-plus mr-1"></i> Adicionar Pré-Requisitos
                 </button>
 
-                <!-- Botão para abrir o modal de adicionar arquivo -->
-                <button class="btn btn-primary" data-toggle="modal" data-target="#adicionarArquivoModal">
-                    <i class="fas fa-file-upload mr-1"></i> Adicionar Documentos
-                </button>
+
             </div>
 
         </div>
