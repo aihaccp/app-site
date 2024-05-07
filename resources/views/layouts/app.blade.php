@@ -37,8 +37,12 @@
 </head>
 
 <body class="font-sans antialiased">
-
-    <button class="btn rounded-circle fixed-bottom-right shadow" id="myButton" data-bs-toggle="tooltip"
+    <style>
+        .hover-button:hover {
+  transform: scale(1.1); /* Aumenta o tamanho do botão em 10% */
+}
+    </style>
+    <button class="btn hover-button rounded-circle fixed-bottom-right shadow" id="myButton" data-bs-toggle="tooltip"
         data-bs-placement="top" title="👋Tens dúvidas? A AiJaleca  ajuda-te!🫵" onclick="redirectToPageX()">
         <img src="{{ asset('img/mascote_aihaccp.png') }}" alt="Jaleca">
     </button>
@@ -52,7 +56,9 @@
             const myButtonTooltip = new bootstrap.Tooltip(myButton, {
                 trigger: 'manual' // Desativa triggers automáticos para controlar manualmente
             });
-
+            setTimeout(function() {
+                myButtonTooltip.dispose();
+            }, 5000);
             if (currentPage.includes('/chat')) {
                 // Remove o botão e o tooltip se estiver na página '/chat'
                 myButtonTooltip.dispose(); // Limpa e remove o tooltip
@@ -114,11 +120,11 @@
             background-color: #ffff;
             border-radius: .25rem;
         }
+
         .tooltip.bs-tooltip-top .tooltip-inner {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175); /* Sombra padrão do Bootstrap */
-    }
-
-
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+            /* Sombra padrão do Bootstrap */
+        }
     </style>
 
     <x-banner />

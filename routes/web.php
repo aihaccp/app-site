@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\OpenAiController;
+use App\Http\Livewire\FilesPrerequisitosManager;
 use App\Models\Company;
+use App\Models\FolderPrerequisito;
 use App\Models\Organition;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -93,10 +95,11 @@ Route::get('/equipamentos/qrcode/{uuid}', function ($uuid) {
 
         });
         Route::get('/pre-requesitos', function () {
-
-            return view('prerequisitos');
-
+            $folders= FolderPrerequisito::all();
+            return view('prerequisitos')->with(['folders'=> $folders]);
         });
+        Route::get('/pre-requisito/{slugFolder}', FilesPrerequisitosManager::class)
+        ->name('pre-requisitos.show');
 
         Route::middleware('role:admin')->group(function () {
             Route::get('/admin', function () {
