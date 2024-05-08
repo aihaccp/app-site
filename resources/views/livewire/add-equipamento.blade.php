@@ -37,5 +37,5 @@
     </div>
     @endif
 
-    <button type="submit" class="btn btn-primary">Adicionar Equipamento</button>
+    <button type="submit" class="btn btn-primary" style="font-weight:400;background-color: black !important;border:0px;border-radius:0px">Adicionar Equipamento</button>
 </form>

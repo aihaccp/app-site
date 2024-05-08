@@ -29,19 +29,47 @@
         </div>
 
 
+        <style>
+            .flex-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1.1rem;
+                height: 100%;
+            }
+            .icon-name {
+                display: flex;
+                align-items: center;
+                margin-right: 20px; /* Margem entre ícone/nome e texto */
+            }
+            .icon-name i {
+                margin-right: 1rem;
+            }
+            .text-right {
+                font-size: 0.8rem;
+                margin-bottom: 0;
+                text-align:left !important; /* Alinha o texto à esquerda */
+            }
+        </style>
+
+
 
         <div class="row" style="margin-top:2%">
             @foreach ($folders as $folder)
-                <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+                <div class="col-lg-9 col-md-9 col-sm-9 mb-4">
                     <div class="card h-100 shadow-sm">
                         <div class="card-body d-flex flex-column">
-                            <div class="d-flex align-items-center justify-content-center"
-                                style="height: 100%;margin-bottom:1.1rem;">
-                                <i class="{{$folder->icon}}" style="margin-right: 1rem; align-self: center;"></i>
-                                <h5 class="card-title" style="margin-bottom: 0;"><b>{{$folder->name}}</b></h5>
+                            <div class="flex-container">
+                                <div class="icon-name">
+                                    <i class="{{$folder->icon}}"></i>
+                                    <h5 class="card-title"><b>{{$folder->name}}</b></h5>
+                                </div>
+                                <p class="text-right">{{$folder->text}}</p>
                             </div>
 
+
                             <div class="mt-auto">
+
                                 <a href="/pre-requisito/{{$folder->slug}}?uuid={{ session('uuid') }}" class="btn btn-primary btn-block"
                                     style="background-color: black; border: 0;">Ver Detalhes</a>
                             </div>

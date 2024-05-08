@@ -1,6 +1,9 @@
 <x-app-layout>
     <div class="container">
         <h5 style="margin-top:0.8rem;">Home / Espaços / {{ $area->designacao }}</h5>
+        <a href="/configuracao/addequipamento/{{$area->uuid}}?uuid={{session('uuid')}}"  style="font-weight:400;background-color: black !important;border:0px;border-radius:0px;margin-top:2rem;" class="btn btn-primary">
+            Adicionar Equipamento
+        </a>
 
 
         <div class="mt-6">
@@ -25,7 +28,8 @@
 
                             </td>
                             <td>
-                              Brevemente
+                                @livewire('qr-code-generator')
+
                             </td>
 
 

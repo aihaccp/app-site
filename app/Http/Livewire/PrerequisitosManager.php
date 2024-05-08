@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 
 class PrerequisitosManager extends Component
 {
-    public $name, $slug, $icon;
+    public $name, $slug, $icon, $text;
     public $disabled = 1;
 
     public function mount()
@@ -29,6 +29,8 @@ class PrerequisitosManager extends Component
             'name' => 'required|string|max:255',
             'icon' => 'required|string|max:150',
             'disabled' => 'required',
+            'text' => 'required',
+
         ]);
 
         $slug = Str::lower(Str::slug($this->name, '-'));
@@ -37,13 +39,15 @@ class PrerequisitosManager extends Component
             'name' => $this->name,
             'slug' => $slug,
             'icon' => $this->icon,
-            'disabled' => $this->disabled
+            'disabled' => $this->disabled,
+            'text' => $this->text
         ]);
 
         // Clear input fields after creation
         $this->name = '';
         $this->icon = '';
         $this->disabled = '';
+        $this->text ='';
     }
 
 }

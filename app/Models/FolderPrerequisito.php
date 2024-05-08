@@ -9,7 +9,7 @@ class FolderPrerequisito extends Model
 {
     use HasFactory;
     protected $table = 'folder_prerequisitos';
-    protected $fillable = ['name', 'slug', 'icon','disabled'];
+    protected $fillable = ['name', 'slug', 'icon','disabled', 'text'];
 
     public function company()
 {
