@@ -36,7 +36,7 @@ class AddAuditoria extends Component
             'questions.*.text' => 'required|string|max:255',
             'questions.*.type' => 'required'
         ]);
-
+        
         // Verificar duplicidade
         $duplicate = Auditoria::where('name', $this->name)
             ->where('id_empresa', $this->estabelecimentoGeral->id)

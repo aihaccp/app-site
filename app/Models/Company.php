@@ -21,6 +21,7 @@ class Company extends Model
         'n_users',
         'cae',
         'emitido_licenciamento',
+        'plan_phasis',
         // Adicione outros campos que você deseja que sejam atribuíveis em massa
     ];
 

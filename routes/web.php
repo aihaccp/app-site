@@ -105,11 +105,25 @@ Route::get('/equipamentos/qrcode/{uuid}', function ($uuid) {
             Route::get('/admin', function () {
 
                 return view('admin.show');
-
+            });
+            Route::get('/register', function () {
+                return view('auth.register');
+            })->name('register');
+            Route::get('/plan-HACCP', function () {
+                return view('haccp_plan');
+            })->name('haccp_plan');
+            Route::post('/register-post', [HomeController::class, 'create_user'])->name('register-post');
+            Route::get('/selecionar-estabelecimento', function () {
+                $uuid = Organition::where('id', Auth::user()->id_company)->first()->id;
+                return view('gerente.select_estabelecimento')->with('uuid', $uuid);
+            })->name('select_esta');
+            Route::prefix('gestao')->group(function () {
+                Route::get('empresa', [GerenteController::class, 'show'])->name('gerente-show');
             });
         });
+      
 
-        Route::middleware('role:gerente,admin')->group(function () {
+        Route::middleware('role:admin')->group(function () {
             Route::get('/register', function () {
                 return view('auth.register');
             })->name('register');
@@ -119,7 +133,7 @@ Route::get('/equipamentos/qrcode/{uuid}', function ($uuid) {
             Route::post('/register-post', [HomeController::class, 'create_user'])->name('register-post');
         });
 
-        Route::middleware('role:gerente')->group(function () {
+        Route::middleware('role:admin')->group(function () {
 
             Route::get('/selecionar-estabelecimento', function () {
                 $uuid = Organition::where('id', Auth::user()->id_company)->first()->id;
