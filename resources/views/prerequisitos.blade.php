@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="text-right">
                                     <button class="btn btn-info" data-toggle="modal" data-target="#infoModal-{{$folder->id}}">
-                                        <i class="fas fa-info-circle mr-1"></i> Informação
+                                        <i class="fas fa-info-circle mr-1"></i> Descrição
                                     </button>
                                 </div>
                             </div>
