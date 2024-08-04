@@ -11,19 +11,26 @@ class QrCodeGenerator extends Component
     public $qrCodeUrl;
     public $image_base64;
     public $downloadLink;
+    public $uuid;
+
+    public function mount($uuid)
+    {
+        $this->uuid = $uuid;
+    }
 
     public function generateQrCodeForDownload()
     {
-        $data = 'https://www.example.com';
+        $data = 'https://api.aihaccp.com/equipment/' . $this->uuid;
         $svg = QrCode::format('svg')->size(200)->generate($data);
 
         // Codificar em Base64 e preparar o link de download
         $base64Svg = base64_encode($svg);
         $this->downloadLink = 'data:image/svg+xml;base64,' . $base64Svg;
     }
+
     public function generateQrCode()
     {
-        $data = 'https://www.example.com'; // O conteúdo do QR Code
+        $data = 'https://api.aihaccp.com/equipment/' . $this->uuid; // O conteúdo do QR Code
         $svg = QrCode::format('svg')
             ->size(200) // Define o tamanho do QR Code
             ->generate($data);
@@ -31,6 +38,7 @@ class QrCodeGenerator extends Component
         // Converte o SVG para Base64 para compatibilidade com o front-end
         $this->image_base64 = base64_encode($svg);
     }
+
     public function render()
     {
         return view('livewire.qr-code-generator');

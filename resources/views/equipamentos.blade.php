@@ -27,9 +27,9 @@
 
 
                             </td>
-                            <td>
-                                @livewire('qr-code-generator')
 
+                            <td>
+                                @livewire('qr-code-generator', ['uuid' => $equipamento->uuid])
                             </td>
 
 

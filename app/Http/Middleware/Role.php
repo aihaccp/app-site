@@ -19,9 +19,9 @@ class Role
     {
 
         if (Auth::check() && Auth::user()->role) {
-            $userRole = Auth::user()->role->nome;
+            $userRole = Auth::user()->role->name;
             $roleNames = explode(',', $roles);
-            
+    
             foreach ($roleNames as $role) {
                 if ($userRole === $role) {
                     return $next($request);
